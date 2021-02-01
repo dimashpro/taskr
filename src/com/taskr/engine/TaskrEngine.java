@@ -306,5 +306,8 @@ public class TaskrEngine {
         }
         System.out.println("\u2557");
     }
+    public static void main(String[] args) {
+        new TaskrEngine().run();
+    }
 }
 

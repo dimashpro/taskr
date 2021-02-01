@@ -33,7 +33,7 @@ public class TaskService {
         return taskRepository.delete(task);
     }
 
-    public String getById(String id){
+    public Task getById(String id){
         return taskRepository.findById(id);
     }
 }
