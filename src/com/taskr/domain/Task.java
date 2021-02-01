@@ -7,21 +7,94 @@ import java.util.Objects;
 
 public class Task {
 
-    public String id;
-    public String title;
-    public String description;
-    List<String> tags = new ArrayList<>();
-    TaskPriority priority;
-    LocalDate startDate, endDate;
+    private String id;
+    private String title;
+    private String description;
+    private List<String> tags;
+    private TaskPriority priority;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
-    public Task(String id, String title, String description, List<String> tags, TaskPriority priority, LocalDate startDate, LocalDate endDate) {
-        this.id = id;
+    public Task(String title, String description, List<String> tags, TaskPriority priority, LocalDate startDate, LocalDate endDate) {
         this.title = title;
         this.description = description;
         this.tags = tags;
         this.priority = priority;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public void setTags(ArrayList<String> tags) {
+        this.tags = tags;
+    }
+
+    public TaskPriority getPriority() {
+        return priority;
+    }
+
+    public void setPriority(TaskPriority priority) {
+        this.priority = priority;
+    }
+
+    public LocalDate getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public LocalDate getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", tags=" + tags +
+                ", priority=" + priority +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 
     @Override
@@ -41,18 +114,5 @@ public class Task {
     @Override
     public int hashCode() {
         return Objects.hash(id, title, description, tags, priority, startDate, endDate);
-    }
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id='" + id + '\'' +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", tags=" + tags +
-                ", priority=" + priority +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
-                '}';
     }
 }
