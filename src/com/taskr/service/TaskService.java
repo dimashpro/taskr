@@ -8,27 +8,32 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class TaskService {
-    private final TaskRepository taskRepository = new TaskRepository();
-    public List<Task> getByPriority(TaskPriority taskPriority){
+    private final TaskRepository taskRepository;
 
+    public TaskService(TaskRepository taskRepository) {
+        this.taskRepository = taskRepository;
+    }
+
+    public List<Task> getByPriority(TaskPriority taskPriority){
+        return taskRepository.findByPriority(taskPriority);
     }
 
     public List<Task> getAll(){
-
+        return taskRepository.findAll();
     }
-    public void getForToday(LocalDate localDate){
-
+    public List<Task> getForToday(){
+        return taskRepository.findByDate(LocalDate.now());
     }
 
     public boolean save(Task task){
-
+        return taskRepository.save(task);
     }
 
     public boolean delete(Task task){
-
+        return taskRepository.delete(task);
     }
 
     public String getById(String id){
-
+        return taskRepository.findById(id);
     }
 }
