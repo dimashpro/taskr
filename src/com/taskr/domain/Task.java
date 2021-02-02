@@ -4,10 +4,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Task {
 
-    private String id;
+    private String id = UUID.randomUUID().toString();
     private String title;
     private String description;
     private List<String> tags;
