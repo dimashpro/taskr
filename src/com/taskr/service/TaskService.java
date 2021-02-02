@@ -29,6 +29,10 @@ public class TaskService {
         return taskRepository.save(task);
     }
 
+    public boolean update(Task task) {
+        return taskRepository.save(task);
+    }
+
     public boolean delete(Task task){
         return taskRepository.delete(task);
     }
