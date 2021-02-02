@@ -7,7 +7,6 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Task {
-
     private String id = UUID.randomUUID().toString();
     private String title;
     private String description;
