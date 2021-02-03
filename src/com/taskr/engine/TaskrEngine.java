@@ -134,7 +134,9 @@ public class TaskrEngine {
         boolean innerMenuRunning = true;
         do {
             printDoubleLineBoxedText("Taskr - View today`s tasks");
-            String todayTasks = taskService.getForToday().stream().map(t -> "\n" + t.toString()).reduce("", String::concat);
+        //    String todayTasks = taskService.getForToday().stream().map(t -> "\n" + t.toString()).reduce("", String::concat);
+            String todayTasks = taskService.getForToday().toString();
+
             printSingleLineBoxedText("Here are your tasks for :" + LocalDate.now() + todayTasks + "\n\n[-1] Back");
             int innerSelectedOption = scanner.nextInt();
             if (innerSelectedOption == -1)
@@ -146,7 +148,9 @@ public class TaskrEngine {
         boolean innerMenuRunning = true;
         do {
             printDoubleLineBoxedText("Taskr - View all tasks");
-            String allTasks = taskService.getAll().stream().map(t -> "\n" + t.toString()).reduce("", String::concat);
+           // String allTasks = taskService.getAll().stream().map(t -> "\n" + t.toString()).reduce("", String::concat);
+            String allTasks = taskService.getAll().toString();
+
             printSingleLineBoxedText("Here are your tasks :" + allTasks + "\n\n[-1] Back");
             int innerSelectedOption = scanner.nextInt();
             if (innerSelectedOption == -1)
