@@ -31,24 +31,25 @@ public class TaskRepository {
     }
 
     public boolean save(Task task) {
-        if (tasks.stream().noneMatch(t -> t.getId().equals(task.getId()))) {
+      //  if (tasks.stream().noneMatch(t -> t.getId().equals(task.getId()))) {
             return tasks.add(task);
-        } else {
-            Task taskToUpdate = tasks.stream().filter(t -> t.getId().equals(task.getId())).findFirst().get();
-            if (task.getTitle() != null && !task.getTitle().isEmpty())
-                taskToUpdate.setTitle(task.getTitle());
-            if (task.getDescription() != null && !task.getDescription().isEmpty())
-                taskToUpdate.setDescription(task.getDescription());
-            if (task.getPriority() != null)
-                taskToUpdate.setPriority(task.getPriority());
-            if (task.getStartDate() != null)
-                taskToUpdate.setStartDate(task.getStartDate());
-            if (task.getEndDate() != null)
-                taskToUpdate.setEndDate(task.getEndDate());
-            if (task.getTags() != null && !task.getTags().isEmpty())
-                taskToUpdate.setTags(task.getTags());
-            return true;
-        }
+    //    }
+//        else {
+//            Task taskToUpdate = tasks.stream().filter(t -> t.getId().equals(task.getId())).findFirst().get();
+//            if (task.getTitle() != null && !task.getTitle().isEmpty())
+//                taskToUpdate.setTitle(task.getTitle());
+//            if (task.getDescription() != null && !task.getDescription().isEmpty())
+//                taskToUpdate.setDescription(task.getDescription());
+//            if (task.getPriority() != null)
+//                taskToUpdate.setPriority(task.getPriority());
+//            if (task.getStartDate() != null)
+//                taskToUpdate.setStartDate(task.getStartDate());
+//            if (task.getEndDate() != null)
+//                taskToUpdate.setEndDate(task.getEndDate());
+//            if (task.getTags() != null && !task.getTags().isEmpty())
+//                taskToUpdate.setTags(task.getTags());
+//            return true;
+//        }
     }
 
     public boolean delete(Task task) {
@@ -80,36 +81,3 @@ public class TaskRepository {
     }
 }
 
-
-
-//
-//import java.time.LocalDate;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class TaskRepository {
-//    private List<Task> tasks = new ArrayList<>();
-//    public  List<Task> findByPriority(){
-//        return tasks;
-//    }
-//
-//    public List<Task> findAll(){
-//        return tasks;
-//    }
-//
-//    public List<Task> findByDate(LocalDate now){
-//        return tasks;
-//    }
-//
-//    public boolean save(Task task){
-//        return true;
-//    }
-//
-//    public boolean delete(Task task){
-//        return true;
-//    }
-//
-//    public Task findById(String id){
-//        return x;
-//    }
-//}
