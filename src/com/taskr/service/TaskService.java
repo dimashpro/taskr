@@ -6,7 +6,6 @@ import com.taskr.repository.TaskRepository;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 
 public class TaskService {
     private final TaskRepository taskRepository;
@@ -42,23 +41,5 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TaskService that = (TaskService) o;
-        return Objects.equals(taskRepository, that.taskRepository);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(taskRepository);
-    }
-
-    @Override
-    public String toString() {
-        return "TaskService{" +
-                "taskRepository=" + taskRepository +
-                '}';
-    }
 }

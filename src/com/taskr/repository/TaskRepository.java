@@ -5,7 +5,6 @@ import com.taskr.domain.TaskPriority;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class TaskRepository {
     private final List<Task> tasks = new ArrayList<>(Arrays.asList(
@@ -15,7 +14,13 @@ public class TaskRepository {
     ));
 
     public List<Task> findByPriority(TaskPriority priority) {
-        return tasks.stream().filter(t -> t.getPriority() == priority).collect(Collectors.toList());
+        List<Task> list = new ArrayList<>();
+        for (Task t : tasks) {
+            if (t.getPriority() == priority) {
+                list.add(t);
+            }
+        }
+        return list;
     }
 
     public List<Task> findAll() {
@@ -23,7 +28,13 @@ public class TaskRepository {
     }
 
     public List<Task> findByDate(LocalDate date) {
-        return tasks.stream().filter(t -> isBetween(date, t.getStartDate(), t.getEndDate())).collect(Collectors.toList());
+        List<Task> list = new ArrayList<>();
+        for (Task t : tasks) {
+            if (isBetween(date, t.getStartDate(), t.getEndDate())) {
+                list.add(t);
+            }
+        }
+        return list;
     }
 
     private boolean isBetween(LocalDate date, LocalDate startDate, LocalDate endDate) {
@@ -57,27 +68,15 @@ public class TaskRepository {
     }
 
     public Task findById(String taskId) {
-        return tasks.stream().filter(t -> t.getId().equals(taskId)).findFirst().orElseThrow(NoSuchElementException::new);
+        for (Task t : tasks) {
+            if (t.getId().equals(taskId)) {
+                return t;
+            }
+        }
+        Task empty = null;
+        throw new NoSuchElementException();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TaskRepository that = (TaskRepository) o;
-        return Objects.equals(tasks, that.tasks);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(tasks);
-    }
-
-    @Override
-    public String toString() {
-        return "TaskRepository{" +
-                "tasks=" + tasks +
-                '}';
-    }
 }
 
